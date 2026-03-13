@@ -1,0 +1,21 @@
+name: viteplus
+
+ddev_version_constraint: '>= v1.25.0'
+
+project_files:
+  - docker-compose.viteplus.yaml
+  - commands/host/vp
+  - commands/host/autocomplete/vp
+
+post_install_actions:
+  - |
+    chmod +x commands/host/vp commands/host/autocomplete/vp
+
+removal_actions:
+  - |
+    rm -f docker-compose.viteplus.yaml
+    rm -f commands/host/vp
+    rm -f commands/host/autocomplete/vp
+    rmdir commands/host/autocomplete >/dev/null 2>&1 || true
+    docker volume rm ddev-${DDEV_SITENAME}_viteplus-home >/dev/null 2>&1 || true
+    docker volume rm ddev-${DDEV_PROJECT}_viteplus-home >/dev/null 2>&1 || true

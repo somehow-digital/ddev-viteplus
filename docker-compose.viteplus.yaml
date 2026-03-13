@@ -1,0 +1,30 @@
+#ddev-generated
+services:
+  viteplus:
+    container_name: ddev-${DDEV_SITENAME}-viteplus
+    image: debian:bookworm-slim
+    restart: "no"
+    working_dir: /var/www/html
+    volumes:
+      - type: bind
+        source: ${DDEV_APPROOT}
+        target: /var/www/html
+      - type: volume
+        source: viteplus-home
+        target: /root
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    expose:
+      - "3000"
+    environment:
+      VIRTUAL_HOST: ${DDEV_HOSTNAME}
+      HTTPS_EXPOSE: "3000:3000"
+    x-ddev:
+      describe-url-port: "https://${DDEV_HOSTNAME}:3000"
+      describe-info: "Vite+ dev server container. Run: ddev vp dev"
+      ssh-shell: bash
+    command: sh -c "apt-get update -qq && apt-get install -y -qq bash curl ca-certificates tar >/dev/null && curl -fsSL https://vite.plus | bash && while [ ! -f /root/.vite-plus/bin/vp ]; do sleep 1; done && ln -sf /root/.vite-plus/bin/vp /usr/local/bin/vp && tail -f /dev/null"
+
+volumes:
+  viteplus-home:
