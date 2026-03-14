@@ -1,4 +1,5 @@
 #!/bin/bash
+## #ddev-generated
 ## Description: Run Vite+ (vp) in the ddev-viteplus service container
 ## Usage: vp <command> [args]
 ## Example: ddev vp install\nddev vp dev
