@@ -50,7 +50,7 @@ health_checks() {
   # Test vp command is available
   run ddev vp help
   assert_success
-  assert_output --partial "VITE+"
+  assert_output --partial "Usage: vp"
 }
 
 teardown() {
