@@ -18,6 +18,8 @@ ddev restart
 ## Commands
 
 - **`ddev vp`**
+- **`ddev vpr`**
+- **`ddev vpx`**
 
 ## URLs
 

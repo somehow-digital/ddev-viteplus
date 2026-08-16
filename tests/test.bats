@@ -51,6 +51,14 @@ health_checks() {
   run ddev vp help
   assert_success
   assert_output --partial "Usage: vp"
+
+  # Test vpr command is available
+  run ddev vpr --help
+  assert_success
+
+  # Test vpx command is available
+  run ddev vpx --help
+  assert_success
 }
 
 teardown() {
