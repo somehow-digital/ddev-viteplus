@@ -5,14 +5,18 @@ ddev_version_constraint: '>= v1.25.0'
 project_files:
   - docker-compose.viteplus.yaml
   - commands/host/vp
+  - commands/host/vpr
+  - commands/host/vpx
   - commands/host/autocomplete/vp
 
 post_install_actions:
   - |
-    chmod +x commands/host/vp commands/host/autocomplete/vp
+    chmod +x commands/host/vp commands/host/vpr commands/host/vpx commands/host/autocomplete/vp
 
 removal_actions:
   - |
     rm -f docker-compose.viteplus.yaml
     rm -f commands/host/vp
+    rm -f commands/host/vpr
+    rm -f commands/host/vpx
     rm -f commands/host/autocomplete/vp
